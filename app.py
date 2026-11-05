@@ -28,6 +28,19 @@ def serve_index():
     return send_from_directory(STATIC_DIR, "index.html")
 
 
+@app.route("/presentation")
+@app.route("/presentation.html")
+def serve_presentation():
+    """Serves the interactive web slide deck."""
+    return send_from_directory(STATIC_DIR, "presentation.html")
+
+
+@app.route("/SpamShield_AI_Presentation.pptx")
+def download_pptx():
+    """Allows downloading the PowerPoint presentation directly."""
+    return send_from_directory(BASE_DIR, "SpamShield_AI_Presentation.pptx", as_attachment=True)
+
+
 @app.route("/<path:path>")
 def serve_static(path):
     """Serves static files (CSS, JS, assets)."""

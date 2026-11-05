@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpamShield AI - Project Presentation Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070b14;
+      --card-bg: #0f172a;
+      --card-border: rgba(6, 182, 212, 0.25);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --cyan: #06b6d4;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --red: #ef4444;
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .deck-header {
+      height: 60px;
+      padding: 0 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo span { color: var(--cyan); }
+    .deck-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .btn-slide {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-slide:hover {
+      background: var(--cyan);
+      color: #fff;
+      border-color: var(--cyan);
+    }
+    .slide-counter {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--cyan);
+    }
+    .deck-container {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .slide {
+      position: absolute;
+      width: 100%;
+      max-width: 1100px;
+      height: 90%;
+      max-height: 680px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 3rem;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      animation: fadeIn 0.3s ease-out;
+    }
+    .slide.active { display: flex; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide-tag {
+      color: var(--cyan);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .slide-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      flex: 1;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      flex: 1;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .card {
+      background: rgba(7, 11, 20, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 0.75rem;
+    }
+    .card-list {
+      list-style: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .card-list li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+    .card-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+    }
+    .stat-badge {
+      background: rgba(7, 11, 20, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .stat-val {
+      font-family: var(--mono);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--green);
+    }
+    .stat-lbl {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="deck-header">
+    <div class="logo">
+      🛡️ SpamShield <span>AI</span> | Presentation Deck
+    </div>
+    <div class="deck-controls">
+      <span class="slide-counter" id="slideCounter">Slide 1 / 12</span>
+      <button class="btn-slide" id="btnPrev">‹ Prev</button>
+      <button class="btn-slide" id="btnNext">Next ›</button>
+      <a href="/SpamShield_AI_Presentation.pptx" download class="btn-slide" style="background: var(--cyan); color: #fff;">📥 Download .PPTX</a>
+      <a href="/#detector" class="btn-slide">Exit Demo</a>
+    </div>
+  </header>
+
+  <main class="deck-container">
+    <!-- Slide 1: Title -->
+    <section class="slide active">
+      <div style="margin: auto; text-align: center; max-width: 800px;">
+        <span class="slide-tag">AI & CYBERSECURITY PROJECT PRESENTATION</span>
+        <h1 class="slide-title" style="font-size: 3.5rem; margin-bottom: 0.5rem;">SpamShield <span style="color: var(--cyan);">AI</span></h1>
+        <p style="font-size: 1.3rem; color: var(--blue); margin-bottom: 2rem;">Intelligent Message Classification, Smishing Detection & Explainability System</p>
+        <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2.5rem; line-height: 1.7;">
+          TF-IDF N-grams &bull; Regularized Logistic Regression &bull; Token Highlight Inspector &bull; Dual Theme UI
+        </p>
+        <div style="background: rgba(7,11,20,0.8); border: 1px solid var(--card-border); border-radius: 10px; padding: 1.2rem; display: inline-block;">
+          <p style="font-weight: 700; color: var(--text);">Candidate / Author: Indra (Reg No: 2403A52185)</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Department of Computer Science & Engineering &bull; SR University (SRU)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 2: Problem Statement -->
+    <section class="slide">
+      <span class="slide-tag">PROJECT MOTIVATION</span>
+      <h2 class="slide-title">Problem Statement: The Smishing Epidemic</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">The Emerging Smishing Threat</h3>
+          <ul class="card-list">
+            <li>Billions of fraudulent SMS and chat messages sent globally every day.</li>
+            <li>Vectors: Fake bank suspensions, customs redelivery fees, lottery windfalls.</li>
+            <li>Attacks exploit urgency and fear to trigger impulsive click-throughs.</li>
+            <li>Direct impact: Financial loss, identity theft, and credential harvesting.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Failure of Legacy Keyword Filters</h3>
+          <ul class="card-list">
+            <li>Static blocklists fail completely against new phrasing and zero-day attacks.</li>
+            <li>Context blindness: Flag benign messages mentioning 'prize' or 'lottery ticket'.</li>
+            <li>Zero probability transparency or certainty indicators.</li>
+            <li>No explainability: Users are never told why a message was blocked.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3: Objectives -->
+    <section class="slide">
+      <span class="slide-tag">PROJECT GOALS</span>
+      <h2 class="slide-title">Core System Objectives</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3 class="card-title">1. Binary Detection</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Accurately classify messages as SPAM or NORMAL using contextual NLP features.</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">2. Calibrated Confidence</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Output true mathematical probabilities and confidence percentages for transparency.</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">3. Token Highlighting</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Inline visual tags marking high/medium-risk threat terms with hover tooltips.</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">4. URL Threat Analysis</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Extracts links, evaluates dangerous TLDs (.xyz, .top), and detects shorteners.</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">5. Audit History</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">SQLite database persistence with search, filtering, and detailed inspection modal.</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">6. Cyber UI/UX</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Dual Dark/Light themes, zero page reloads, and 1-click test preset chips.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4: Architecture -->
+    <section class="slide">
+      <span class="slide-tag">SYSTEM DESIGN</span>
+      <h2 class="slide-title">5-Stage Machine Learning Pipeline</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Processing Pipeline Flow</h3>
+          <ul class="card-list">
+            <li><strong>Stage 1: Input Ingestion:</strong> Accepts text, URLs, numbers, and emojis.</li>
+            <li><strong>Stage 2: Preprocessing:</strong> Tokenization, URL and currency normalization.</li>
+            <li><strong>Stage 3: Feature Extraction:</strong> TF-IDF unigram & bigram matrix (8,000 max features).</li>
+            <li><strong>Stage 4: Classification:</strong> Logistic Regression with probability calibration.</li>
+            <li><strong>Stage 5: Result Generation:</strong> Threat scoring, token highlights, and safety advice.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Technology Stack Architecture</h3>
+          <ul class="card-list">
+            <li><strong>Frontend:</strong> HTML5, Glassmorphism CSS3, Vanilla ES6+ JS.</li>
+            <li><strong>Backend API:</strong> Python 3.13, Flask 3.1, Gunicorn WSGI.</li>
+            <li><strong>ML Engine:</strong> Scikit-learn, NumPy, Pandas, Joblib.</li>
+            <li><strong>Storage:</strong> SQLite 3 with audit log tables.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 5: ML Pipeline -->
+    <section class="slide">
+      <span class="slide-tag">ALGORITHM & MATH</span>
+      <h2 class="slide-title">TF-IDF Vectorization & Classification</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">TF-IDF Feature Representation</h3>
+          <ul class="card-list">
+            <li>N-gram Range: (1, 2) captures words and phrases ("verify identity").</li>
+            <li>Sublinear TF scaling: 1 + log(tf) suppresses term spamming.</li>
+            <li>Canonical tokenization: &lt;urltoken&gt;, &lt;phonetoken&gt;, &lt;currencytoken&gt;.</li>
+            <li>Dimensions: 8,000 features optimized for &lt;35ms latency.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Calibrated Logistic Regression</h3>
+          <ul class="card-list">
+            <li>Loss Function: Log-Loss with L2 regularization (C=5.0).</li>
+            <li>Probability Sigmoid: P(Spam | X) = 1 / (1 + exp(- (w^T * X + b))).</li>
+            <li>Balanced Class Weights: Prevents majority class bias.</li>
+            <li>Direct Explainability: Model coefficients expose exact word weights.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 6: Threat Taxonomy -->
+    <section class="slide">
+      <span class="slide-tag">HEURISTICS ENGINE</span>
+      <h2 class="slide-title">Behavioral Threat Taxonomy</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">🚨 Urgency & Coercion</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">"urgent", "action required", "account locked in 24 hours". Exploit fear to bypass cognitive scrutiny.</p>
+          <h3 class="card-title" style="margin-top: 1rem;">🎁 Lottery & Reward Scams</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">"congratulations", "won $1,000 gift card". Uses greed and novelty to bait victims.</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">🔐 Credential Harvesting</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">"verify password", "confirm OTP/PIN". Direct theft of authentication credentials.</p>
+          <h3 class="card-title" style="margin-top: 1rem;">📦 Delivery Smishing</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">"USPS package pending fee". Mimics postal carriers to steal credit card data.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 7: Evaluation Results -->
+    <section class="slide">
+      <span class="slide-tag">VALIDATION</span>
+      <h2 class="slide-title">Model Evaluation Results</h2>
+      <div class="grid-4">
+        <div class="stat-badge"><div class="stat-val">100.0%</div><div class="stat-lbl">Accuracy</div></div>
+        <div class="stat-badge"><div class="stat-val" style="color: var(--cyan);">100.0%</div><div class="stat-lbl">Precision</div></div>
+        <div class="stat-badge"><div class="stat-val" style="color: var(--blue);">100.0%</div><div class="stat-lbl">Recall</div></div>
+        <div class="stat-badge"><div class="stat-val" style="color: #a855f7;">100.0%</div><div class="stat-lbl">F1-Score</div></div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Held-Out Test Dataset</h3>
+          <ul class="card-list">
+            <li>Total Dataset: 2,721 realistic samples (1,460 Ham, 1,261 Spam).</li>
+            <li>Train / Test Split: 80% (2,176) & 20% strictly held-out (545).</li>
+            <li>Zero contamination: Evaluated purely on unseen messages.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Confusion Matrix (545 Samples)</h3>
+          <ul class="card-list">
+            <li>True Negatives (TN): 292 (Legitimate messages approved)</li>
+            <li>True Positives (TP): 253 (Spam attacks blocked)</li>
+            <li>False Positives (FP): 0 &bull; False Negatives (FN): 0</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 8: UI/UX -->
+    <section class="slide">
+      <span class="slide-tag">INTERFACE</span>
+      <h2 class="slide-title">Cybersecurity UI & UX Highlights</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Visual Design</h3>
+          <ul class="card-list">
+            <li>Dark Navy & Cyan glowing theme with persistent Light Mode toggle.</li>
+            <li>Glassmorphism cards with backdrop blur.</li>
+            <li>Dynamic radar scanner animation during analysis.</li>
+            <li>Fully responsive layout for Desktop, Tablet, and Mobile.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Interactive Elements</h3>
+          <ul class="card-list">
+            <li>1-Click test presets (Lottery, Chase Bank, USPS, Friends).</li>
+            <li>Real-time character (15,000 max) and word counters.</li>
+            <li>Token highlighter with color-coded risk tooltips.</li>
+            <li>SQLite audit trail with search, filter, and detail modal.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 9: Automated Tests -->
+    <section class="slide">
+      <span class="slide-tag">QUALITY ASSURANCE</span>
+      <h2 class="slide-title">Automated Test Suite (10/10 Passed)</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Tests 1 to 5</h3>
+          <ul class="card-list">
+            <li>✓ Normal personal messages (Chipotle lunch chat &gt;90% normal)</li>
+            <li>✓ Promotional spam (Ray-Ban discounts flagged as SPAM)</li>
+            <li>✓ Fake prize notifications ($1,000 Walmart card detected)</li>
+            <li>✓ Bank account verification (Chase card alert flagged)</li>
+            <li>✓ Messages containing URLs (Destination threat evaluated)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Tests 6 to 10</h3>
+          <ul class="card-list">
+            <li>✓ Numbers, symbols, and currencies ($10,000,000, %$$$)</li>
+            <li>✓ Unicode emojis (❤️, 🎉, 🎁, 🚨 supported without crashing)</li>
+            <li>✓ Empty message validation (Friendly error message)</li>
+            <li>✓ Very long messages (&gt;500 words processed smoothly)</li>
+            <li>✓ Mixed benign language (Context evaluated accurately)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 10: Tech Stack -->
+    <section class="slide">
+      <span class="slide-tag">IMPLEMENTATION</span>
+      <h2 class="slide-title">Full Technology Stack</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Core Backend & ML</h3>
+          <ul class="card-list">
+            <li>Python 3.13: Modern runtime environment.</li>
+            <li>Scikit-learn: TF-IDF vectorizer + Logistic Regression.</li>
+            <li>Flask 3.1 & CORS: High-throughput REST API.</li>
+            <li>SQLite 3: Embedded zero-config audit logging.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Deployment & DevOps</h3>
+          <ul class="card-list">
+            <li>Gunicorn: WSGI production server.</li>
+            <li>Render.yaml & Procfile: 1-click cloud hosting config.</li>
+            <li>Git & GitHub: Full version control with main branch.</li>
+            <li>Localtunnel & Pinggy: Secure HTTPS public tunneling.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 11: Demo & Deliverables -->
+    <section class="slide">
+      <span class="slide-tag">PROJECT ARTIFACTS</span>
+      <h2 class="slide-title">Project Deliverables & Repository</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">GitHub Repository</h3>
+          <p style="color: var(--cyan); font-family: var(--mono); font-size: 0.9rem; margin-bottom: 0.75rem;">github.com/indra8531/spam-message-detection</p>
+          <ul class="card-list">
+            <li>All 16 source files, dataset, models, and test suite.</li>
+            <li>Comprehensive README.md with architecture docs.</li>
+            <li>Pre-trained ML pipeline joblib file included.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Live Working Environments</h3>
+          <ul class="card-list">
+            <li>Public Link: https://clean-suns-draw.loca.lt/#detector</li>
+            <li>Local Server: http://127.0.0.1:5000/#detector</li>
+            <li>Live ML Report API: /api/model-info</li>
+            <li>Presentation Deck: /presentation.html</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 12: Conclusion -->
+    <section class="slide">
+      <span class="slide-tag">SUMMARY & ROADMAP</span>
+      <h2 class="slide-title">Conclusion & Future Enhancements</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Future Enhancements</h3>
+          <ul class="card-list">
+            <li>Multilingual NLP: Support for Telugu, Hindi, and Spanish.</li>
+            <li>Browser Extension: Direct scan for Gmail and WhatsApp Web.</li>
+            <li>Telecom Gateway API: Carrier-level spam filtering.</li>
+            <li>Active Feedback Loop: Continuous retraining from user flags.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Final Conclusion</h3>
+          <ul class="card-list">
+            <li>SpamShield AI bridges Machine Learning and Cybersecurity.</li>
+            <li>Delivers high accuracy (100%) paired with transparent explainability.</li>
+            <li>Protects users against deceptive social engineering attacks.</li>
+            <li>Fully functional, tested, open-source deliverable on GitHub.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('slideCounter');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    let current = 0;
+
+    function showSlide(idx) {
+      slides[current].classList.remove('active');
+      current = (idx + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      counter.textContent = `Slide ${current + 1} / ${slides.length}`;
+    }
+
+    btnPrev.addEventListener('click', () => showSlide(current - 1));
+    btnNext.addEventListener('click', () => showSlide(current + 1));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'Space') showSlide(current + 1);
+      if (e.key === 'ArrowLeft') showSlide(current - 1);
+    });
+  </script>
+</body>
+</html>
