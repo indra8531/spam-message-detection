@@ -1,12 +1,12 @@
 # SpamShield AI - AI-Powered Spam Message Detection System
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Active-06B6D4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://0297def682a3da.lhr.life/#detector)
-[![Presentation Deck](https://img.shields.io/badge/Presentation-12_Slides-3B82F6?style=for-the-badge&logo=microsoftpowerpoint&logoColor=white)](https://0297def682a3da.lhr.life/presentation.html)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Active-06B6D4?style=for-the-badge&logo=cloudflare&logoColor=white)](https://bradley-indication-handling-convinced.trycloudflare.com/#detector)
+[![Presentation Deck](https://img.shields.io/badge/Presentation-12_Slides-3B82F6?style=for-the-badge&logo=microsoftpowerpoint&logoColor=white)](https://bradley-indication-handling-convinced.trycloudflare.com/presentation.html)
 [![Model Accuracy](https://img.shields.io/badge/Test_Accuracy-100.0%25-10B981?style=for-the-badge&logo=scikitlearn&logoColor=white)](#-model-evaluation-performance)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
-> 🌐 **Live Website Link**: **[https://0297def682a3da.lhr.life](https://0297def682a3da.lhr.life)**  
-> 📊 **Interactive Web Presentation Deck**: **[https://0297def682a3da.lhr.life/presentation.html](https://0297def682a3da.lhr.life/presentation.html)**  
+> 🌐 **Live Website Link**: **[https://bradley-indication-handling-convinced.trycloudflare.com](https://bradley-indication-handling-convinced.trycloudflare.com)**  
+> 📊 **Interactive Web Presentation Deck**: **[https://bradley-indication-handling-convinced.trycloudflare.com/presentation.html](https://bradley-indication-handling-convinced.trycloudflare.com/presentation.html)**  
 > 📥 **Download PowerPoint File**: **[SpamShield_AI_Presentation.pptx](SpamShield_AI_Presentation.pptx)**
 
 **SpamShield AI** is a modern, responsive, cybersecurity-themed AI application engineered to detect and classify spam and smishing messages from normal communication in real time. It utilizes Natural Language Processing (NLP), TF-IDF feature extraction, and machine learning models trained on labeled message datasets to deliver instant probabilistic verdicts, token-level explainability, and actionable security recommendations.
