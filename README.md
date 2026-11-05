@@ -157,10 +157,9 @@ All 10 tests validate:
 python app.py
 ```
 
-Open your browser and navigate to:
-```
-http://127.0.0.1:5000
-```
+- **Public Live Application**: [https://0297def682a3da.lhr.life/#detector](https://0297def682a3da.lhr.life/#detector)
+- **Interactive Presentation Deck**: [https://0297def682a3da.lhr.life/presentation.html](https://0297def682a3da.lhr.life/presentation.html)
+- **Local Application**: [http://127.0.0.1:5000/#detector](http://127.0.0.1:5000/#detector)
 
 ---
 
