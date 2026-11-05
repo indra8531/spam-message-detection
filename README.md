@@ -1,6 +1,6 @@
 # SpamShield AI - AI-Powered Spam Message Detection System
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Active-06B6D4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://0297def682a3da.lhr.life/#detector)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Active-06B6D4?style=for-the-badge&logo=googlechrome&logoColor=white)][(https://0297def682a3da.lhr.life/#detector)](https://0297def682a3da.lhr.life/)
 [![Presentation Deck](https://img.shields.io/badge/Presentation-12_Slides-3B82F6?style=for-the-badge&logo=microsoftpowerpoint&logoColor=white)](https://0297def682a3da.lhr.life/presentation.html)
 [![Model Accuracy](https://img.shields.io/badge/Test_Accuracy-100.0%25-10B981?style=for-the-badge&logo=scikitlearn&logoColor=white)](#-model-evaluation-performance)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
