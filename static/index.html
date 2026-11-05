@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpamShield AI - AI-Powered Spam Message Detection System</title>
+  <meta name="description" content="SpamShield AI is an intelligent message classification system designed to distinguish spam messages from normal messages using Natural Language Processing and Machine Learning.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="#home" class="brand-logo" aria-label="SpamShield AI Home">
+        <div class="logo-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <span class="brand-text">SpamShield <span>AI</span></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#detector" class="nav-link">Spam Detector</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="#history" class="nav-link">Detection History</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="status-pill" id="statusPill" title="Backend ML Model Status">
+          <span class="status-dot"></span>
+          <span id="statusText">Model Ready</span>
+        </div>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme" title="Toggle theme">
+          <svg id="themeIconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg id="themeIconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="home">
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+        <span>AI-Powered Cybersecurity Engine</span>
+      </div>
+
+      <h1 class="hero-title">
+        Detect Spam. <span class="gradient-text">Stay Safe.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        An intelligent message detection system that analyzes text and identifies suspicious messages in seconds.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#detector" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          Start Detection
+        </a>
+        <a href="#how-it-works" class="btn btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          Learn More
+        </a>
+      </div>
+
+      <!-- Quick Stats Ticker -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-val" id="statAccuracy">100.0%</div>
+          <div class="stat-label">Model Test Accuracy</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="statSpeed">&lt; 35ms</div>
+          <div class="stat-label">Analysis Latency</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="statTotalAnalyzed">0</div>
+          <div class="stat-label">Messages Analyzed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">TF-IDF + ML</div>
+          <div class="stat-label">Dual AI Classifier</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Spam Detection Module -->
+  <main>
+    <section class="detector-section" id="detector">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Core Detection Module</span>
+          <h2 class="section-title">Message Analysis Engine</h2>
+          <p class="section-desc">Paste SMS text, suspicious alerts, delivery notifications, or email excerpts to evaluate spam probability and extract behavioral indicators.</p>
+        </div>
+
+        <div class="detector-card">
+          <!-- Preset Sample Chips -->
+          <div class="sample-presets-bar">
+            <div class="presets-label">Quick Test Presets (Click to load):</div>
+            <div class="preset-chips">
+              <button type="button" class="preset-chip" data-sample="lottery">🎁 Fake Lottery Prize</button>
+              <button type="button" class="preset-chip" data-sample="bank">🏦 Bank Card Fraud Alert</button>
+              <button type="button" class="preset-chip" data-sample="parcel">📦 USPS Delivery Scam</button>
+              <button type="button" class="preset-chip" data-sample="crypto">🚀 Crypto Investment</button>
+              <button type="button" class="preset-chip" data-sample="friend">👋 Friend Lunch Chat</button>
+              <button type="button" class="preset-chip" data-sample="meeting">💼 Work Project Sync</button>
+            </div>
+          </div>
+
+          <!-- Message Textarea -->
+          <div class="input-wrap">
+            <textarea 
+              id="messageInput" 
+              class="message-textarea" 
+              rows="6" 
+              placeholder="Paste your message here to check whether it is spam or normal..." 
+              maxlength="15000"
+              spellcheck="false"
+            ></textarea>
+          </div>
+
+          <div class="input-footer">
+            <div class="char-counter">
+              <span id="charCount">0</span> / 15,000 characters &bull; <span id="wordCount">0</span> words
+            </div>
+
+            <div class="input-actions">
+              <button type="button" class="btn btn-clear" id="btnClear" title="Clear message input">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+                Clear
+              </button>
+
+              <button type="button" class="btn btn-paste" id="btnPaste" title="Paste from clipboard">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                </svg>
+                Paste
+              </button>
+
+              <button type="button" class="btn btn-primary btn-analyze" id="btnAnalyze">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="M9 12l2 2 4-4"/>
+                </svg>
+                Analyze Message
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scanning / Radar Animation Wrap -->
+        <div class="scan-progress-wrap" id="scanProgressWrap">
+          <div class="radar-spinner"></div>
+          <div class="scan-text">Scanning Message Content...</div>
+          <div class="scan-subtext" id="scanStatusSubtext">Extracting TF-IDF n-grams & calculating probabilities...</div>
+        </div>
+
+        <!-- Detection Result Card -->
+        <div class="result-card" id="resultCard">
+          <div class="result-header">
+            <div class="verdict-badge-wrap">
+              <div class="verdict-icon" id="verdictIcon">
+                <!-- Injected via JS -->
+              </div>
+              <div class="verdict-titles">
+                <span class="verdict-tag" id="verdictTag">Classification Result</span>
+                <span class="verdict-title" id="verdictTitle">SPAM DETECTED</span>
+              </div>
+            </div>
+
+            <div class="confidence-box">
+              <div class="confidence-label">Prediction Confidence</div>
+              <div class="confidence-val" id="confidenceVal">96.4%</div>
+            </div>
+          </div>
+
+          <!-- Probability Comparison Bar -->
+          <div class="prob-breakdown-wrap">
+            <div class="prob-labels">
+              <span id="probSpamText">Spam Probability: 96.4%</span>
+              <span id="probNormalText">Normal Probability: 3.6%</span>
+            </div>
+            <div class="prob-bar-container">
+              <div class="prob-bar-spam" id="probBarSpam" style="width: 96.4%;"></div>
+              <div class="prob-bar-normal" id="probBarNormal" style="width: 3.6%;"></div>
+            </div>
+          </div>
+
+          <!-- Suspicious Message Analysis (Token Highlighting) -->
+          <div class="highlight-section">
+            <div class="highlight-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              Suspicious Word & Token Analysis
+            </div>
+            <div class="highlight-box" id="highlightBox">
+              <!-- Tokens highlighted dynamically -->
+            </div>
+          </div>
+
+          <!-- Two-column reasons & recommendations -->
+          <div class="details-grid">
+            <div class="details-card">
+              <div class="details-card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+                </svg>
+                Why Was This Classified This Way?
+              </div>
+              <ul class="reasons-list" id="reasonsList">
+                <!-- Injected via JS -->
+              </ul>
+            </div>
+
+            <div class="details-card">
+              <div class="details-card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                Safety & Threat Recommendations
+              </div>
+              <ul class="rec-list" id="recList">
+                <!-- Injected via JS -->
+              </ul>
+            </div>
+          </div>
+
+          <!-- Extracted Links & Domain Threats -->
+          <div class="details-card" id="linksDetailsCard" style="display: none; margin-bottom: 1.75rem;">
+            <div class="details-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+              </svg>
+              Extracted URLs & External Destination Threat Analysis
+            </div>
+            <ul class="links-list" id="linksList">
+              <!-- Links injected via JS -->
+            </ul>
+          </div>
+
+          <!-- Disclaimer Banner -->
+          <div class="disclaimer-banner">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span id="disclaimerText">SpamShield AI predictions are probabilistic machine-learning estimations and do not constitute an absolute security guarantee. Always exercise standard digital caution.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Machine Learning Pipeline</span>
+          <h2 class="section-title">How SpamShield AI Works</h2>
+          <p class="section-desc">From raw message input to mathematical probability estimation across five transparent processing stages.</p>
+        </div>
+
+        <div class="pipeline-steps">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h3 class="step-title">Message Input</h3>
+            <p class="step-desc">User provides text containing personal messages, promotional spam, URLs, emojis, or numbers.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+              </svg>
+            </div>
+            <h3 class="step-title">Text Processing</h3>
+            <p class="step-desc">Normalizes text, standardizes URLs, phone numbers, and currency tags while preserving context.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/>
+              </svg>
+            </div>
+            <h3 class="step-title">Feature Extraction</h3>
+            <p class="step-desc">TF-IDF converts text into high-dimensional numerical vectors using unigrams and bigrams.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </div>
+            <h3 class="step-title">AI Classification</h3>
+            <p class="step-desc">Trained Scikit-learn model calculates exact calibrated probability distribution for Spam vs Ham.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">5</div>
+            <div class="step-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <h3 class="step-title">Result Generation</h3>
+            <p class="step-desc">Generates confidence score, token highlights, threat explanations, and actionable guidance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detection History Section -->
+    <section class="history-section" id="history">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Audit Trail</span>
+          <h2 class="section-title">Detection History</h2>
+          <p class="section-desc">Review your previously analyzed messages, inspection dates, confidence scores, and detailed reasoning.</p>
+        </div>
+
+        <div class="history-toolbar">
+          <div class="history-filters">
+            <button type="button" class="filter-btn active" data-filter="all">All Messages</button>
+            <button type="button" class="filter-btn" data-filter="spam">Spam Only</button>
+            <button type="button" class="filter-btn" data-filter="normal">Normal Only</button>
+          </div>
+
+          <div class="history-actions">
+            <button type="button" class="btn-danger-outline" id="btnClearHistory">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              </svg>
+              Clear All History
+            </button>
+          </div>
+        </div>
+
+        <div class="history-list" id="historyList">
+          <div class="empty-state" id="emptyHistoryState">
+            <div class="empty-state-icon">🛡️</div>
+            <h4>No Analyzed Messages Yet</h4>
+            <p>Your analyzed messages will appear here with timestamp and classification breakdown.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <span class="section-tag">Project Overview</span>
+            <h2 class="section-title">About SpamShield AI</h2>
+            <p>
+              <strong>SpamShield AI</strong> is an intelligent message classification system designed to distinguish spam messages from normal messages using Natural Language Processing and Machine Learning. It helps users recognize suspicious communication and make more informed decisions when interacting with digital messages.
+            </p>
+            <p>
+              Unlike traditional keyword filters that look for single terms, SpamShield AI examines the complete linguistic context, syntactic urgency patterns, link structures, and probabilistic TF-IDF feature embeddings.
+            </p>
+
+            <div class="tech-chips">
+              <span class="tech-chip">Python 3.13</span>
+              <span class="tech-chip">Scikit-learn</span>
+              <span class="tech-chip">TF-IDF Vectorization</span>
+              <span class="tech-chip">Logistic Regression</span>
+              <span class="tech-chip">Flask REST API</span>
+              <span class="tech-chip">SQLite Persistence</span>
+              <span class="tech-chip">Modern Glassmorphism UI</span>
+            </div>
+
+            <button type="button" class="btn btn-secondary" id="btnViewModelReport">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+              View Full ML Evaluation Report
+            </button>
+          </div>
+
+          <div class="model-card-mini">
+            <div class="model-card-header">
+              <h3 style="font-size: 1.15rem; font-weight: 700;">Live Model Architecture</h3>
+              <span class="status-pill"><span class="status-dot"></span> Active</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-name">Classifier:</span>
+              <span class="metric-value">Logistic Regression</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-name">Feature Extractor:</span>
+              <span class="metric-value">TF-IDF (1-2 ngrams)</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-name">Test Accuracy:</span>
+              <span class="metric-value" id="cardAccuracy">100.0%</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-name">Test Precision:</span>
+              <span class="metric-value" id="cardPrecision">100.0%</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-name">Test Recall:</span>
+              <span class="metric-value" id="cardRecall">100.0%</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-name">Test F1-Score:</span>
+              <span class="metric-value" id="cardF1">100.0%</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-name">Vocabulary Size:</span>
+              <span class="metric-value" id="cardVocab">5,120 features</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Get in Touch</span>
+          <h2 class="section-title">Contact & Feedback</h2>
+          <p class="section-desc">Have suggestions, new smishing patterns to report, or inquiries about SpamShield AI?</p>
+        </div>
+
+        <div class="contact-card">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="contactName" class="form-label">Full Name</label>
+              <input type="text" id="contactName" class="form-input" placeholder="e.g. Alex Morgan" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">Email Address</label>
+              <input type="email" id="contactEmail" class="form-input" placeholder="alex@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactSubject" class="form-label">Subject</label>
+              <input type="text" id="contactSubject" class="form-input" placeholder="Feedback or Model Question">
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage" class="form-label">Message</label>
+              <textarea id="contactMessage" class="form-textarea" rows="4" placeholder="Type your message here..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="btnSendContact" style="width: 100%;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="brand-logo">
+          <div class="logo-icon-wrap" style="width: 32px; height: 32px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <span>SpamShield AI</span>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#detector">Detector</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#history">History</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 SpamShield AI. AI-Powered Message Threat Detection System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Model Evaluation Report -->
+  <div class="modal-backdrop" id="modelModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">ML Model Evaluation Report</h3>
+        <button class="modal-close" id="btnCloseModelModal">&times;</button>
+      </div>
+      <div id="modelModalBody">
+        <p>Loading model metrics from backend...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: History Item Detail -->
+  <div class="modal-backdrop" id="historyModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="historyModalTitle">Detection Record Details</h3>
+        <button class="modal-close" id="btnCloseHistoryModal">&times;</button>
+      </div>
+      <div id="historyModalBody">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toastNotification">
+    <span id="toastIcon">ℹ️</span>
+    <span id="toastMessage">Notification message</span>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="js/app.js"></script>
+</body>
+</html>

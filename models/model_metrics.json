@@ -1,0 +1,170 @@
+{
+  "model_name": "TF-IDF + Regularized Logistic Regression",
+  "algorithm": "LogisticRegression (C=5.0, balanced class weights)",
+  "vectorizer": "TF-IDF (1-2 ngrams, sublinear tf, 8000 max features)",
+  "train_samples": 2176,
+  "test_samples": 545,
+  "total_samples": 2721,
+  "accuracy": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1_score": 1.0,
+  "confusion_matrix": {
+    "tn": 292,
+    "fp": 0,
+    "fn": 0,
+    "tp": 253
+  },
+  "classification_report": {
+    "Normal (Ham)": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 292.0
+    },
+    "Spam": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 253.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 545.0
+    },
+    "weighted avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 545.0
+    }
+  },
+  "top_spam_indicators": [
+    {
+      "word": "urltoken",
+      "weight": 3.898
+    },
+    {
+      "word": "currencytoken",
+      "weight": 3.275
+    },
+    {
+      "word": "at urltoken",
+      "weight": 2.454
+    },
+    {
+      "word": "call",
+      "weight": 2.395
+    },
+    {
+      "word": "phonetoken",
+      "weight": 2.391
+    },
+    {
+      "word": "of",
+      "weight": 2.184
+    },
+    {
+      "word": "call phonetoken",
+      "weight": 2.177
+    },
+    {
+      "word": "of currencytoken",
+      "weight": 2.164
+    },
+    {
+      "word": "reply",
+      "weight": 2.164
+    },
+    {
+      "word": "id",
+      "weight": 2.123
+    },
+    {
+      "word": "prize",
+      "weight": 2.058
+    },
+    {
+      "word": "phonetoken or",
+      "weight": 1.993
+    },
+    {
+      "word": "opt",
+      "weight": 1.965
+    },
+    {
+      "word": "to opt",
+      "weight": 1.965
+    },
+    {
+      "word": "reply stop",
+      "weight": 1.965
+    }
+  ],
+  "top_normal_indicators": [
+    {
+      "word": "the",
+      "weight": 4.003
+    },
+    {
+      "word": "talk",
+      "weight": 2.551
+    },
+    {
+      "word": "to you",
+      "weight": 2.551
+    },
+    {
+      "word": "talk to",
+      "weight": 2.551
+    },
+    {
+      "word": "later",
+      "weight": 2.551
+    },
+    {
+      "word": "you later",
+      "weight": 2.551
+    },
+    {
+      "word": "for",
+      "weight": 2.245
+    },
+    {
+      "word": "pm",
+      "weight": 2.004
+    },
+    {
+      "word": "you",
+      "weight": 1.985
+    },
+    {
+      "word": "for the",
+      "weight": 1.652
+    },
+    {
+      "word": "meeting",
+      "weight": 1.577
+    },
+    {
+      "word": "me",
+      "weight": 1.503
+    },
+    {
+      "word": "at the",
+      "weight": 1.461
+    },
+    {
+      "word": "hey",
+      "weight": 1.413
+    },
+    {
+      "word": "just",
+      "weight": 1.401
+    }
+  ],
+  "vocabulary_size": 3827
+}
