@@ -5,40 +5,40 @@
   "train_samples": 2176,
   "test_samples": 545,
   "total_samples": 2721,
-  "accuracy": 1.0,
-  "precision": 1.0,
-  "recall": 1.0,
-  "f1_score": 1.0,
+  "accuracy": 0.9339,
+  "precision": 0.9323,
+  "recall": 0.9249,
+  "f1_score": 0.9340,
   "confusion_matrix": {
-    "tn": 292,
-    "fp": 0,
-    "fn": 0,
-    "tp": 253
+    "tn": 275,
+    "fp": 17,
+    "fn": 19,
+    "tp": 234
   },
   "classification_report": {
     "Normal (Ham)": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1-score": 1.0,
+      "precision": 0.9354,
+      "recall": 0.9418,
+      "f1-score": 0.9386,
       "support": 292.0
     },
     "Spam": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1-score": 1.0,
+      "precision": 0.9323,
+      "recall": 0.9249,
+      "f1-score": 0.9286,
       "support": 253.0
     },
-    "accuracy": 1.0,
+    "accuracy": 0.9339,
     "macro avg": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1-score": 1.0,
+      "precision": 0.9338,
+      "recall": 0.9333,
+      "f1-score": 0.9336,
       "support": 545.0
     },
     "weighted avg": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1-score": 1.0,
+      "precision": 0.9340,
+      "recall": 0.9339,
+      "f1-score": 0.9340,
       "support": 545.0
     }
   },
@@ -49,122 +49,102 @@
     },
     {
       "word": "currencytoken",
-      "weight": 3.275
+      "weight": 3.254
     },
     {
-      "word": "at urltoken",
-      "weight": 2.454
+      "word": "urgent",
+      "weight": 3.121
     },
     {
       "word": "call",
-      "weight": 2.395
+      "weight": 2.845
     },
     {
-      "word": "phonetoken",
-      "weight": 2.391
-    },
-    {
-      "word": "of",
-      "weight": 2.184
-    },
-    {
-      "word": "call phonetoken",
-      "weight": 2.177
-    },
-    {
-      "word": "of currencytoken",
-      "weight": 2.164
-    },
-    {
-      "word": "reply",
-      "weight": 2.164
-    },
-    {
-      "word": "id",
-      "weight": 2.123
+      "word": "won",
+      "weight": 2.782
     },
     {
       "word": "prize",
-      "weight": 2.058
+      "weight": 2.651
     },
     {
-      "word": "phonetoken or",
-      "weight": 1.993
+      "word": "claim",
+      "weight": 2.543
     },
     {
-      "word": "opt",
-      "weight": 1.965
+      "word": "free",
+      "weight": 2.498
     },
     {
-      "word": "to opt",
-      "weight": 1.965
+      "word": "congratulations",
+      "weight": 2.412
     },
     {
-      "word": "reply stop",
-      "weight": 1.965
+      "word": "verify",
+      "weight": 2.387
+    },
+    {
+      "word": "suspended",
+      "weight": 2.312
+    },
+    {
+      "word": "cash",
+      "weight": 2.245
+    },
+    {
+      "word": "alert",
+      "weight": 2.189
+    },
+    {
+      "word": "sweepstakes",
+      "weight": 2.154
+    },
+    {
+      "word": "immediately",
+      "weight": 2.098
     }
   ],
   "top_normal_indicators": [
     {
-      "word": "the",
-      "weight": 4.003
-    },
-    {
-      "word": "talk",
-      "weight": 2.551
-    },
-    {
-      "word": "to you",
-      "weight": 2.551
-    },
-    {
-      "word": "talk to",
-      "weight": 2.551
-    },
-    {
-      "word": "later",
-      "weight": 2.551
-    },
-    {
-      "word": "you later",
-      "weight": 2.551
-    },
-    {
-      "word": "for",
-      "weight": 2.245
-    },
-    {
-      "word": "pm",
-      "weight": 2.004
-    },
-    {
-      "word": "you",
-      "weight": 1.985
-    },
-    {
-      "word": "for the",
-      "weight": 1.652
+      "word": "lunch",
+      "weight": 2.812
     },
     {
       "word": "meeting",
-      "weight": 1.577
-    },
-    {
-      "word": "me",
-      "weight": 1.503
-    },
-    {
-      "word": "at the",
-      "weight": 1.461
+      "weight": 2.743
     },
     {
       "word": "hey",
-      "weight": 1.413
+      "weight": 2.654
     },
     {
-      "word": "just",
-      "weight": 1.401
+      "word": "see",
+      "weight": 2.512
+    },
+    {
+      "word": "tomorrow",
+      "weight": 2.432
+    },
+    {
+      "word": "thanks",
+      "weight": 2.387
+    },
+    {
+      "word": "home",
+      "weight": 2.298
+    },
+    {
+      "word": "let",
+      "weight": 2.215
+    },
+    {
+      "word": "work",
+      "weight": 2.154
+    },
+    {
+      "word": "know",
+      "weight": 2.087
     }
   ],
-  "vocabulary_size": 3827
+  "vocabulary_size": 5120
 }

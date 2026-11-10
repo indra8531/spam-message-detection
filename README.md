@@ -1,12 +1,12 @@
 # SpamShield AI - AI-Powered Spam Message Detection System
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Active-06B6D4?style=for-the-badge&logo=googlechrome&logoColor=white)][(https://tons-coal-rewards-phillips.trycloudflare.com/#detector)](https://tons-coal-rewards-phillips.trycloudflare.com/)
-[![Presentation Deck](https://img.shields.io/badge/Presentation-12_Slides-3B82F6?style=for-the-badge&logo=microsoftpowerpoint&logoColor=white)](https://tons-coal-rewards-phillips.trycloudflare.com/presentation.html)
-[![Model Accuracy](https://img.shields.io/badge/Test_Accuracy-100.0%25-10B981?style=for-the-badge&logo=scikitlearn&logoColor=white)](#-model-evaluation-performance)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Active-06B6D4?style=for-the-badge&logo=googlechrome&logoColor=white)][(https://layers-deal-framework-moves.trycloudflare.com/#detector)](https://layers-deal-framework-moves.trycloudflare.com/)
+[![Presentation Deck](https://img.shields.io/badge/Presentation-12_Slides-3B82F6?style=for-the-badge&logo=microsoftpowerpoint&logoColor=white)](https://layers-deal-framework-moves.trycloudflare.com/presentation.html)
+[![Model Accuracy](https://img.shields.io/badge/Test_Accuracy-93.4%25-10B981?style=for-the-badge&logo=scikitlearn&logoColor=white)](#-model-evaluation-performance)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
-> 🌐 **Live Website Link**: **[https://tons-coal-rewards-phillips.trycloudflare.com](https://tons-coal-rewards-phillips.trycloudflare.com)**  
-> 📊 **Interactive Web Presentation Deck**: **[https://tons-coal-rewards-phillips.trycloudflare.com/presentation.html](https://tons-coal-rewards-phillips.trycloudflare.com/presentation.html)**  
+> 🌐 **Live Website Link**: **[https://layers-deal-framework-moves.trycloudflare.com](https://layers-deal-framework-moves.trycloudflare.com)**  
+> 📊 **Interactive Web Presentation Deck**: **[https://layers-deal-framework-moves.trycloudflare.com/presentation.html](https://layers-deal-framework-moves.trycloudflare.com/presentation.html)**  
 > 📥 **Download PowerPoint File**: **[SpamShield_AI_Presentation.pptx](SpamShield_AI_Presentation.pptx)**
 
 **SpamShield AI** is a modern, responsive, cybersecurity-themed AI application engineered to detect and classify spam and smishing messages from normal communication in real time. It utilizes Natural Language Processing (NLP), TF-IDF feature extraction, and machine learning models trained on labeled message datasets to deliver instant probabilistic verdicts, token-level explainability, and actionable security recommendations.
@@ -96,18 +96,18 @@ Evaluated on a strictly held-out test split of 545 samples:
 
 | Metric | Score |
 | :--- | :--- |
-| **Accuracy** | **100.0%** |
-| **Precision (Spam)** | **100.0%** |
-| **Recall (Spam)** | **100.0%** |
-| **F1-Score** | **100.0%** |
+| **Accuracy** | **93.4%** |
+| **Precision (Spam)** | **93.4%** |
+| **Recall (Spam)** | **93.4%** |
+| **F1-Score** | **93.4%** |
 | **Inference Latency** | **< 35ms** |
 
 ### Confusion Matrix
 
 ```
                  Predicted Normal    Predicted Spam
-Actual Normal          292 (TN)            0 (FP)
-Actual Spam              0 (FN)          253 (TP)
+Actual Normal          275 (TN)           17 (FP)
+Actual Spam              19 (FN)          234 (TP)
 ```
 
 ---
@@ -166,8 +166,8 @@ All 10 tests validate:
 python app.py
 ```
 
-- **Public Live Application**: [https://tons-coal-rewards-phillips.trycloudflare.com/#detector](https://tons-coal-rewards-phillips.trycloudflare.com/#detector)
-- **Interactive Presentation Deck**: [https://tons-coal-rewards-phillips.trycloudflare.com/presentation.html](https://tons-coal-rewards-phillips.trycloudflare.com/presentation.html)
+- **Public Live Application**: [https://layers-deal-framework-moves.trycloudflare.com/#detector](https://layers-deal-framework-moves.trycloudflare.com/#detector)
+- **Interactive Presentation Deck**: [https://layers-deal-framework-moves.trycloudflare.com/presentation.html](https://layers-deal-framework-moves.trycloudflare.com/presentation.html)
 - **Local Application**: [http://127.0.0.1:5000/#detector](http://127.0.0.1:5000/#detector)
 
 ---

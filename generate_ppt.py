@@ -333,10 +333,10 @@ def create_presentation():
 
     # 4 Metric Cards
     metric_cards = [
-        ("100.0%", "Accuracy Score", COLOR_GREEN),
-        ("100.0%", "Precision (Spam)", COLOR_CYAN),
-        ("100.0%", "Recall (Spam)", COLOR_BLUE),
-        ("100.0%", "F1-Score", RGBColor(168, 85, 247))
+        ("93.4%", "Accuracy Score", COLOR_GREEN),
+        ("93.2%", "Precision (Spam)", COLOR_CYAN),
+        ("92.5%", "Recall (Spam)", COLOR_BLUE),
+        ("93.4%", "F1-Score", RGBColor(168, 85, 247))
     ]
 
     for idx, (mval, mlabel, mcolor) in enumerate(metric_cards):
@@ -375,10 +375,10 @@ def create_presentation():
 
     add_card(s7, Inches(6.9), Inches(3.35), Inches(5.6), Inches(3.5),
              "Held-Out Confusion Matrix (545 Samples)", [
-                 "True Negatives (TN): 292 (Normal correctly classified as Normal)",
-                 "True Positives (TP): 253 (Spam correctly classified as Spam)",
-                 "False Positives (FP): 0 (Zero legitimate messages blocked)",
-                 "False Negatives (FN): 0 (Zero spam threats missed)",
+                 "True Negatives (TN): 275 (Normal correctly classified as Normal)",
+                 "True Positives (TP): 234 (Spam correctly classified as Spam)",
+                 "False Positives (FP): 17 (Subtle marketing falsely flagged)",
+                 "False Negatives (FN): 19 (Obfuscated edge cases missed)",
                  "Top Spam Feature Tokens: urltoken (+3.90), currencytoken (+3.25), urgent (+3.12), call (+2.85), won (+2.78)."
              ], border_color=COLOR_GREEN)
 
